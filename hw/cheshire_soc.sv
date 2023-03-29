@@ -390,15 +390,9 @@ module cheshire_soc import cheshire_pkg::*; #(
     .out_rsp_i    ( reg_out_rsp )
   );
 
-  reg_err_slv #(
-    .DW       ( 32 ),
-    .ERR_VAL  ( 32'hBADCAB1E ),
-    .req_t    ( reg_req_t ),
-    .rsp_t    ( reg_rsp_t )
-  ) i_reg_err_slv (
-    .req_i  ( reg_out_req[RegOut.err] ),
-    .rsp_o  ( reg_out_rsp[RegOut.err] )
-  );
+  assign reg_out_rsp[RegOut.err].rdata = 32'hBADCAB1E;
+  assign reg_out_rsp[RegOut.err].error = 1'b1;
+  assign reg_out_rsp[RegOut.err].ready = 1'b1;
 
   // Connect external slaves
   if (Cfg.RegExtNumSlv > 0) begin : gen_ext_reg_slv
