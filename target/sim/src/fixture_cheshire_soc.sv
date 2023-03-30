@@ -714,7 +714,7 @@ module cheshire_soc_fixture;
     .rst_sl_ni      ( rst_n ),
     .clk_reg_i      ( clk   ),
     .rst_reg_ni     ( rst_n ),
-    .testmode_i     ( test_mode_i ),
+    .testmode_i     ( test_mode ),
     .axi_in_req_i   ( slink_axi_mst_req ),
     .axi_in_rsp_o   ( slink_axi_mst_rsp ),
     .axi_out_req_o  ( slink_axi_slv_req ),
