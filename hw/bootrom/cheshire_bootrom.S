@@ -4,6 +4,7 @@
 //
 // Nicole Narr <narrn@student.ethz.ch>
 // Christopher Reinwardt <creinwar@student.ethz.ch>
+// Paul Scheffler <paulsc@iis.ee.ethz.ch>
 
 // TODO: Avoid hardcoding in addresses and offsets
 // TODO: park non-0 harts here and adapt to new parameterization
@@ -14,7 +15,7 @@
 .global _start
 .global _exit
 _start:
-    // Init stack and global pointer with safe, linked vales
+    // Init stack and global pointer with safe, linked values
     la sp, __stack_pointer$
     .option push
     .option norelax
