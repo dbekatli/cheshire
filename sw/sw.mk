@@ -124,6 +124,7 @@ CHS_TEST_SRCS_S     = $(wildcard $(CHS_SW_DIR)/tests/*.S)
 CHS_TEST_SRCS_C     = $(wildcard $(CHS_SW_DIR)/tests/*.c)
 CHS_TEST_DRAM_DUMP  = $(CHS_TEST_SRCS_S:.S=.dram.dump) $(CHS_TEST_SRCS_C:.c=.dram.dump)
 CHS_TEST_SPM_DUMP   = $(CHS_TEST_SRCS_S:.S=.spm.dump)  $(CHS_TEST_SRCS_C:.c=.spm.dump)
+CHS_TEST_L2_DUMP   = $(CHS_TEST_SRCS_S:.S=.l2.dump)  $(CHS_TEST_SRCS_C:.c=.l2.dump)
 CHS_TEST_SPM_MEMH   = $(CHS_TEST_SRCS_S:.S=.rom.memh)  $(CHS_TEST_SRCS_C:.c=.rom.memh)
 
-chs-sw-tests: $(CHS_TEST_DRAM_DUMP) $(CHS_TEST_SPM_DUMP) $(CHS_TEST_SPM_MEMH)
+chs-sw-tests: $(CHS_TEST_DRAM_DUMP) $(CHS_TEST_SPM_DUMP) $(CHS_TEST_L2_DUMP) $(CHS_TEST_SPM_MEMH)
