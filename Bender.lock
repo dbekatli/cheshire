@@ -119,7 +119,7 @@ packages:
     - register_interface
     - tech_cells_generic
   register_interface:
-    revision: 7786760a75fed8534c84f6e52e80089e2d491b76
+    revision: 50270f7f5b0ac512f8c35cfca15b7c70f74b4b0e
     version: null
     source:
       Git: https://github.com/pulp-platform/register_interface.git
@@ -127,6 +127,7 @@ packages:
     - apb
     - axi
     - common_cells
+    - common_verification
   riscv-dbg:
     revision: 122510063a02e0d012f0497ffdbafca53d4e716b
     version: 0.7.0
