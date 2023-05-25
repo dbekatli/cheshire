@@ -17,8 +17,12 @@ package cheshire_pkg;
       return (width != 32'd0) ? unsigned'(width-1) : 32'd0;
   endfunction
 
+  // Parameters assumed immutable
+  localparam int unsigned MaxNumIntHarts  = 2;                    // Currently: at most dual-core
+  localparam int unsigned NumBusErrIntrs  = 2*MaxNumIntHarts;     // One for read and write each
+  localparam int unsigned NumIntIntrs     = NumBusErrIntrs + 51;  // Must agree with struct below
+
   // Parameters defined by generated hardware (regenerate to adapt)
-  localparam int unsigned NumIntIntrs     = 51; // Must agree with struct below
   localparam int unsigned NumExtIntrs     = rv_plic_reg_pkg::NumSrc - NumIntIntrs;
   localparam int unsigned SpihNumCs       = spi_host_reg_pkg::NumCS - 1;  // Last CS is dummy
   localparam int unsigned SlinkNumChan    = serial_link_single_channel_reg_pkg::NumChannels;
@@ -167,6 +171,7 @@ package cheshire_pkg;
   // Defined interrupts
   typedef struct packed {
     logic [iomsb(NumExtIntrs):0] ext;
+    logic [NumBusErrIntrs-1:0] buserr;
     logic [31:0] gpio;
     logic spih_spi_event;
     logic spih_error;

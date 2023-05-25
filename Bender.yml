@@ -41,6 +41,13 @@ sources:
 
   - target: any(simulation, test)
     files:
+      # STAGING AREA
+      - rtl/bus_err_unit_reg_pkg.sv
+      - rtl/bus_err_unit_reg_top.sv
+      - rtl/bus_err_unit.sv
+      - rtl/axi_err_unit_wrap.sv
+      - rtl/obi_err_unit_wrap.sv
+
       - target/sim/models/s25fs512s.v
       - target/sim/models/24FC1025.v
       - target/sim/src/vip_cheshire_soc.sv

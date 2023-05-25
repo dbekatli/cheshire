@@ -588,6 +588,30 @@ module cheshire_soc import cheshire_pkg::*; #(
     .axi_resp_i       ( core_out_rsp )
   );
 
+  // Add a bus error unit communicating bus errors as interrupts
+  axi_err_unit_wrap #(
+    .AddrWidth        (),
+    .IdWidth          (),
+    .UserErrBits      (),
+    .UserErrBitsOffset(),
+    .NumOutstanding   (),
+    .NumStoredErrors  (),
+    .DropOldest       (),
+    .axi_req_t        (),
+    .axi_rsp_t        (),
+    .reg_req_t        (),
+    .reg_rsp_t        ()
+  ) i_axi_err_unit_wrap (
+    .clk_i,
+    .rst_ni,
+    .testmode_i ( test_mode_i       ),
+    .axi_req_i  ( core_out_req      ),
+    .axi_rsp_i  ( core_out_rsp      ),
+    .err_irq_o  ( intr.buserr[1:0]  ),
+    .reg_req_i  ( ),
+    .reg_rsp_o  ( )
+  );
+
   // Map user to AMO domain as we are an atomics-capable master.
   // As we are core 0, the core 1 and serial link AMO bits should *not* be set.
   always_comb begin

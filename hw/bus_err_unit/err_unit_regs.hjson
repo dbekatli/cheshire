@@ -1,0 +1,58 @@
+// Copyright 2022 ETH Zurich and University of Bologna.
+// Solderpad Hardware License, Version 0.51, see LICENSE for details.
+// SPDX-License-Identifier: SHL-0.51
+
+{
+  name: "bus_err_unit",
+  clock_primary: "clk_i",
+  reset_primary: "rst_ni",
+  bus_interfaces: [
+    { protocol: "reg_iface",
+      direction: "device"
+    }
+  ],
+
+  regwidth: "32",
+
+  registers: [
+    { name: "err_addr",
+      desc: "Address of the earliest bus error",
+      swaccess: "ro",
+      hwaccess: "hwo",
+      hwext: "true",
+
+      fields: [
+        { bits: "31:0",
+          name: "err_addr",
+          desc: "Address of the last bus error"
+        }
+      ]
+    },
+    { name: "err_addr_top",
+      desc: "Top of the address of the earliest bus error",
+      swaccess: "ro",
+      hwaccess: "hwo",
+      hwext: "true",
+
+      fields: [
+        { bits: "31:0",
+          name: "err_addr",
+          desc: "Address of the last bus error"
+        }
+      ]
+    },
+    { name: "err_code",
+      desc: "Error code of the last bus error",
+      swaccess: "ro",
+      hwaccess: "hrw",
+      hwext: "true",
+      hwre: "true",
+      fields: [
+        { bits: "31:0",
+          name: "err_code",
+          desc: "Error code of the last bus error"
+        }
+      ]
+    },
+  ]
+}
